@@ -6,11 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
+
 // Configure DbContext before building the app
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<StudentContext>(options =>
         options.UseInMemoryDatabase("Student"));
+
 }
 else
 {

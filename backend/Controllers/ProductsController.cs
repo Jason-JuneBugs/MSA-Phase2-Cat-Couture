@@ -26,7 +26,7 @@ namespace backend.Controllers
 
         // GET: api/products/id
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(long id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var product = await _repository.GetProductByIdAsync(id);
 
@@ -40,7 +40,7 @@ namespace backend.Controllers
 
         // PUT: api/products/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Putproduct(long id, Product product)
+        public async Task<IActionResult> PutProduct(int id, Product product)
         {
             if (id != product.Id)
             {
@@ -68,15 +68,15 @@ namespace backend.Controllers
 
         // POST: api/Products
         [HttpPost]
-        public async Task<ActionResult<Product>> PostStudent(Product product)
+        public async Task<ActionResult<Product>> PostProduct(Product product)
         {
             await _repository.AddProductAsync(product);
-            return CreatedAtAction("GetStudent", new { id = product.Id }, product);
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(long id)
+        public async Task<IActionResult> DeleteProduct(int id)
         {
             var product = await _repository.GetProductByIdAsync(id);
             if (product == null)

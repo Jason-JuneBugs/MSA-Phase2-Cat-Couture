@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Models;
 using Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,10 @@ if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<StudentContext>(options =>
         options.UseInMemoryDatabase("Student"));
+    // Jason added
+    builder.Services.AddDbContext<ProductContext>(options =>
+        options.UseInMemoryDatabase("Product"));
+    //
 
 }
 else
@@ -21,6 +26,9 @@ else
 }
 
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+//Jason added
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//
 
 builder.Services.AddCors(options =>
 {

@@ -17,7 +17,7 @@ namespace Repositories
             return await _context.Product.ToListAsync();
         }
 
-        public async Task<Product> GetProductByIdAsync(long id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
             return await _context.Product.FindAsync(id);
         }
@@ -34,7 +34,7 @@ namespace Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteProductAsync(long id)
+        public async Task DeleteProductAsync(int id)
         {
             var product = await _context.Product.FindAsync(id);
             if (product != null)
@@ -44,7 +44,7 @@ namespace Repositories
             }
         }
 
-        public async Task<bool> ProductExistsAsync(long id)
+        public async Task<bool> ProductExistsAsync(int id)
         {
             return await _context.Product.AnyAsync(e => e.Id == id);
         }

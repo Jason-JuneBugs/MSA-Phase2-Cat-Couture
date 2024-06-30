@@ -18,11 +18,11 @@ namespace Models
 
         [ForeignKey("ProductCategory")]
         public int ProductCategoryId { get; set; }
-        public ProductCategory? ProductCategory { get; set; }
+        public ProductCategory ProductCategory { get; set; }
 
         [ForeignKey("ProductImage")]
         public int? ProductImageId { get; set; }
-        public ProductImage? ProductImage { get; set; }
+        public ProductImage ProductImage { get; set; }
     }
 
 

@@ -1,3 +1,4 @@
+using backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Repositories;
@@ -61,5 +62,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.CreateDbIfNotExists();
 
 app.Run();

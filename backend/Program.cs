@@ -14,7 +14,8 @@ if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<StudentContext>(options =>
         options.UseInMemoryDatabase("Student"));
-    // Jason added
+
+    // add ProductContext to the services
     builder.Services.AddDbContext<ProductContext>(options =>
         options.UseInMemoryDatabase("Product"));
     //

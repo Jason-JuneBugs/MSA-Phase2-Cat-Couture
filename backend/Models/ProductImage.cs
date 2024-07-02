@@ -8,10 +8,10 @@ namespace Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(10)] // Adjust the maximum length as needed
+        [MaxLength(100)] // Adjust the maximum length as needed
         public string? Name { get; set; }
 
-        [MaxLength(50)] // Adjust the maximum length for description
+        [MaxLength(500)] // Adjust the maximum length for description
         public string? Description { get; set; }
     }
 }

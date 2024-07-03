@@ -51,7 +51,7 @@ namespace backend.Migrations
 
                     b.HasIndex("ProductImageId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Models.ProductCategory", b =>

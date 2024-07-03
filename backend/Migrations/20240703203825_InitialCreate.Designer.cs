@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace backend.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20240703112026_InitialCreate")]
+    [Migration("20240703203825_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -54,7 +54,7 @@ namespace backend.Migrations
 
                     b.HasIndex("ProductImageId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Models.ProductCategory", b =>

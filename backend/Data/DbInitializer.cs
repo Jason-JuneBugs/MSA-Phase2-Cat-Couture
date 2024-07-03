@@ -7,7 +7,7 @@ namespace backend.Data
         public static void Initialize(ProductContext context)
         {
 
-            if (context.Product.Any()
+            if (context.Products.Any()
             && context.ProductCategories.Any()
             && context.ProductImages.Any())
             {
@@ -505,7 +505,7 @@ namespace backend.Data
 
 
 
-            context.Product.AddRange(products);
+            context.Products.AddRange(products);
             context.ProductCategories.AddRange(productCategories);
             context.ProductImages.AddRange(productImages);
 

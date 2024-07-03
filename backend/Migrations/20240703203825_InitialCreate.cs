@@ -39,7 +39,7 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -52,28 +52,28 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Product_ProductCategories_ProductCategoryId",
+                        name: "FK_Products_ProductCategories_ProductCategoryId",
                         column: x => x.ProductCategoryId,
                         principalTable: "ProductCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Product_ProductImages_ProductImageId",
+                        name: "FK_Products_ProductImages_ProductImageId",
                         column: x => x.ProductImageId,
                         principalTable: "ProductImages",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_ProductCategoryId",
-                table: "Product",
+                name: "IX_Products_ProductCategoryId",
+                table: "Products",
                 column: "ProductCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_ProductImageId",
-                table: "Product",
+                name: "IX_Products_ProductImageId",
+                table: "Products",
                 column: "ProductImageId");
         }
 
@@ -81,7 +81,7 @@ namespace backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "ProductCategories");

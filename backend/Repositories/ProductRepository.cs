@@ -14,17 +14,17 @@ namespace Repositories
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            return await _context.Product.ToListAsync();
+            return await _context.Products.ToListAsync();
         }
 
         public async Task<Product> GetProductByIdAsync(int id)
         {
-            return await _context.Product.FindAsync(id);
+            return await _context.Products.FindAsync(id);
         }
 
         public async Task AddProductAsync(Product product)
         {
-            _context.Product.Add(product);
+            _context.Products.Add(product);
             await _context.SaveChangesAsync();
         }
 
@@ -36,22 +36,22 @@ namespace Repositories
 
         public async Task DeleteProductAsync(int id)
         {
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
-                _context.Product.Remove(product);
+                _context.Products.Remove(product);
                 await _context.SaveChangesAsync();
             }
         }
 
         public async Task<bool> ProductExistsAsync(int id)
         {
-            return await _context.Product.AnyAsync(e => e.Id == id);
+            return await _context.Products.AnyAsync(e => e.Id == id);
         }
 
         public async Task BulkAddProductsAsync(IEnumerable<Product> products)
         {
-            await _context.Product.AddRangeAsync(products);
+            await _context.Products.AddRangeAsync(products);
             await _context.SaveChangesAsync();
         }
     }

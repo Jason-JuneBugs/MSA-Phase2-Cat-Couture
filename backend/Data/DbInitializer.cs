@@ -287,6 +287,8 @@ namespace backend.Data
                     ProductImageId = 30
                 },
             };
+
+            //add seeding productCategories data
             var productCategories = new ProductCategory[]
                 {
                 new ProductCategory
@@ -316,7 +318,7 @@ namespace backend.Data
                     },
             };
 
-
+            //add seeding productImages data
             var productImages = new ProductImage[]
                 {
                 new ProductImage

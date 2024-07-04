@@ -12,10 +12,30 @@ namespace Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        // public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        // {
+        //     return await _context.Products.ToListAsync();
+
+        // }
+        public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products
+        .Include(p => p.ProductCategory) // Include the related ProductCategory
+        .Include(p => p.ProductImage)
+        .Select(p => new ProductDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Description = p.Description,
+            Price = p.Price,
+            CategoryName = p.ProductCategory.Name,// Retrieve the Name column from ProductCategory table
+            ImageName = p.ProductImage.Name,
+            ImageDescription = p.ProductImage.Description,
+
+        })
+        .ToListAsync();
         }
+
 
         public async Task<Product> GetProductByIdAsync(int id)
         {

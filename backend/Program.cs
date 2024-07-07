@@ -25,8 +25,7 @@ if (builder.Environment.IsDevelopment())
 }
 else
 {
-    builder.Services.AddDbContext<StudentContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("StudentContext") ?? throw new InvalidOperationException("Connection string 'StudentContext' not found.")));
+    builder.Services.AddDbContext<ProductContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("postgres")));
 }
 
 // builder.Services.AddScoped<IStudentRepository, StudentRepository>();

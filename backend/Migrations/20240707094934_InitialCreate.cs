@@ -47,7 +47,7 @@ namespace backend.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
                     Price = table.Column<decimal>(type: "money", nullable: false),
-                    ProductCategoryId = table.Column<int>(type: "integer", nullable: false),
+                    ProductCategoryId = table.Column<int>(type: "integer", nullable: true),
                     ProductImageId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -57,8 +57,7 @@ namespace backend.Migrations
                         name: "FK_Products_ProductCategories_ProductCategoryId",
                         column: x => x.ProductCategoryId,
                         principalTable: "ProductCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Products_ProductImages_ProductImageId",
                         column: x => x.ProductImageId,

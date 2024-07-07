@@ -5,7 +5,10 @@ namespace Models
 {
     public class Product
     {
+        // [Key]
+        // public int Id { get; set; }
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -17,7 +20,7 @@ namespace Models
         public decimal Price { get; set; }
 
         [ForeignKey("ProductCategory")]
-        public int ProductCategoryId { get; set; }
+        public int? ProductCategoryId { get; set; }
         public ProductCategory? ProductCategory { get; set; }
 
         [ForeignKey("ProductImage")]

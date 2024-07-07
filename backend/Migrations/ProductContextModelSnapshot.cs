@@ -39,7 +39,7 @@ namespace backend.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
-                    b.Property<int>("ProductCategoryId")
+                    b.Property<int?>("ProductCategoryId")
                         .HasColumnType("integer");
 
                     b.Property<int?>("ProductImageId")
@@ -98,9 +98,7 @@ namespace backend.Migrations
                 {
                     b.HasOne("Models.ProductCategory", "ProductCategory")
                         .WithMany()
-                        .HasForeignKey("ProductCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductCategoryId");
 
                     b.HasOne("Models.ProductImage", "ProductImage")
                         .WithMany()

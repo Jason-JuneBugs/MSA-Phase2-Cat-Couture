@@ -5,8 +5,7 @@ namespace Models
 {
     public class Product
     {
-        // [Key]
-        // public int Id { get; set; }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -19,13 +18,9 @@ namespace Models
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
-        [ForeignKey("ProductCategory")]
-        public int? ProductCategoryId { get; set; }
-        public ProductCategory? ProductCategory { get; set; }
+        public string? ImageName { get; set; }
 
-        [ForeignKey("ProductImage")]
-        public int? ProductImageId { get; set; }
-        public ProductImage? ProductImage { get; set; }
+
     }
 
 

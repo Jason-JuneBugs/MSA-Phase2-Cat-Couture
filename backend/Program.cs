@@ -28,8 +28,6 @@ else
     builder.Services.AddDbContext<ProductContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("postgres")));
 }
 
-// builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-//Jason added
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //
 

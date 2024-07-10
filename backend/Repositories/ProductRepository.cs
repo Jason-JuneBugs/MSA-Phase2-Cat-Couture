@@ -46,11 +46,18 @@ namespace Repositories
         }
 
 
-        public async Task AddProductAsync(Product product)
+        // public async Task AddProductAsync(Product product)
+        // {
+        //     _context.Products.Add(product);
+        //     await _context.SaveChangesAsync();
+        // }
+        public async Task<Product> AddProductAsync(Product product)
         {
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
+            return product;
         }
+
 
         public async Task UpdateProductAsync(Product product)
         {
@@ -68,8 +75,6 @@ namespace Repositories
                 await _context.SaveChangesAsync();
             }
         }
-
-
 
 
         public async Task<bool> ProductExistsAsync(int id)

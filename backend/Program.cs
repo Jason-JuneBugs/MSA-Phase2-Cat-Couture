@@ -1,7 +1,7 @@
 using backend.Data;
 using Microsoft.EntityFrameworkCore;
-using Models;
 using Repositories;
+using Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +29,8 @@ else
 }
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//
+//add fileServcie
+builder.Services.AddTransient<IFileService, FileService>();
 
 builder.Services.AddCors(options =>
 {
@@ -46,6 +47,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// mapping Uploads folder to Resources folder 
+// app.UseStaticFiles(new StaticFileOptions
+// {
+//     FileProvider = new PhysicalFileProvider(
+//            Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
+//     RequestPath = "/Resources"
+// });
 
 // Enable CORS
 app.UseCors("AllowReactApp");

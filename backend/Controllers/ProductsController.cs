@@ -80,32 +80,84 @@ namespace backend.Controllers
         }
 
         //PUT: api/products/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
-        {
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
+        // [HttpPut("{id}")]
+        // public async Task<IActionResult> PutProduct(int id, Product product)
+        // {
+        //     if (id != product.Id)
+        //     {
+        //         return BadRequest();
+        //     }
 
+        //     try
+        //     {
+        //         await _repository.UpdateProductAsync(product);
+        //     }
+        //     catch (DbUpdateConcurrencyException)
+        //     {
+        //         if (!await _repository.ProductExistsAsync(id))
+        //         {
+        //             return NotFound();
+        //         }
+        //         else
+        //         {
+        //             throw;
+        //         }
+        //     }
+
+        //     return NoContent();
+        // }
+
+
+        //PUT: api/products/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProduct(int id, [FromForm] ProductUpdateDTO productToUpdate)
+        {
             try
             {
-                await _repository.UpdateProductAsync(product);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!await _repository.ProductExistsAsync(id))
+                if (id != productToUpdate.Id)
                 {
-                    return NotFound();
+                    return StatusCode(StatusCodes.Status400BadRequest, $"id in url and form body does not match.");
                 }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
+                var existingProduct = await _repository.GetProductByIdAsync(id);
+                if (existingProduct == null)
+                {
+                    return StatusCode(StatusCodes.Status404NotFound, $"Product with id: {id} does not found");
+                }
+                string oldImageName = existingProduct.ImageName;
+                if (productToUpdate.ImageFile != null)
+                {
+                    if (productToUpdate.ImageFile?.Length > 1 * 1024 * 1024)
+                    {
+                        return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
+                    }
+                    string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+                    string createdImageName = await _fileService.SaveFileAsync(productToUpdate.ImageFile, allowedFileExtentions);
+                    productToUpdate.ImageName = createdImageName;
+                }
+
+                // mapping `ProductDTO` to `Product` manually. You can use automapper.
+                existingProduct.Id = productToUpdate.Id;
+                existingProduct.Name = productToUpdate.Name;
+                existingProduct.Description = productToUpdate.Description;
+                existingProduct.ImageName = productToUpdate.ImageName;
+                existingProduct.Price = productToUpdate.Price;
+
+                var updatedProduct = await _repository.UpdateProductAsync(existingProduct);
+
+                // if image is updated, then we have to delete old image from directory
+                if (productToUpdate.ImageFile != null)
+                    _fileService.DeleteFile(oldImageName);
+
+                return Ok(updatedProduct);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
+
         // [HttpPut("{id}")]
         // public async Task<IActionResult> PutProduct(int id, Product product)
         // {

@@ -18,7 +18,7 @@ namespace Models
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
-        [Required]
+        // [Required]
         [MaxLength(50)]
         public string? ImageName { get; set; }
 

@@ -8,7 +8,8 @@ namespace Repositories
         Task<Product> GetProductByIdAsync(int id);
         // Task AddProductAsync(Product product);
         Task<Product> AddProductAsync(Product product);
-        Task UpdateProductAsync(Product product);
+        // Task UpdateProductAsync(Product product);
+        Task<Product> UpdateProductAsync(Product product);
         Task DeleteProductAsync(int id);
         Task<bool> ProductExistsAsync(int id);
         Task BulkAddProductsAsync(IEnumerable<Product> products);

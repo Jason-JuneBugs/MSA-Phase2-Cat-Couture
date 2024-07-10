@@ -59,10 +59,11 @@ namespace Repositories
         }
 
 
-        public async Task UpdateProductAsync(Product product)
+        public async Task<Product> UpdateProductAsync(Product product)
         {
             _context.Entry(product).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+            return product;
         }
 
 

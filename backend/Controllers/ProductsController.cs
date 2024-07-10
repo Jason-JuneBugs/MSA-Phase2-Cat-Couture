@@ -164,23 +164,43 @@ namespace backend.Controllers
         //     return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         // }
 
+        // DELETE: api/Products/5
+        // [HttpDelete("{id}")]
+        // public async Task<IActionResult> DeleteProduct(int id)
+        // {
+        //     var product = await _repository.GetProductByIdAsync(id);
+        //     if (product == null)
+        //     {
+        //         return NotFound();
+        //     }
 
+        //     await _repository.DeleteProductAsync(id);
 
-
+        //     return NoContent();
+        // }
 
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var product = await _repository.GetProductByIdAsync(id);
-            if (product == null)
+            try
             {
-                return NotFound();
+                var existingProduct = await _repository.GetProductByIdAsync(id);
+                if (existingProduct == null)
+                {
+                    return StatusCode(StatusCodes.Status404NotFound, $"Product with id: {id} does not found");
+                }
+
+                await _repository.DeleteProductAsync(id);
+                // After deleting product from database,remove file from directory.
+                _fileService.DeleteFile(existingProduct.ImageName);
+                return NoContent();  // return 204
             }
-
-            await _repository.DeleteProductAsync(id);
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         // POST: api/Products/bulk

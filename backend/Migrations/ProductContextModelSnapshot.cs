@@ -32,7 +32,8 @@ namespace backend.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("ImageName")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()

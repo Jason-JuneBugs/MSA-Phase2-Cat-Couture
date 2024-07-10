@@ -20,7 +20,7 @@ namespace backend.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
                     Price = table.Column<decimal>(type: "money", nullable: false),
-                    ImageName = table.Column<string>(type: "text", nullable: true)
+                    ImageName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {

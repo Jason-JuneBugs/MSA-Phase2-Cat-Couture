@@ -57,7 +57,7 @@ namespace backend.Controllers
 
 
 
-        // GET: api/Products
+        //GET: api/Products
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {

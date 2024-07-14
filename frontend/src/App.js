@@ -7,7 +7,7 @@ import NotFoundPage from "./components/NotFoundPage";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProductSummaryPage from "./components/dashboard/AddProductPage";
-
+import ProductForm from "./components/AddProduct/ProductForm";
 const StyledApp = styled.div`
   display: flex;
   height: 100vh;
@@ -29,6 +29,7 @@ const App = () => {
 
         {/* <Route exact path="/" element={<ProductPage />} /> */}
         <Route exact path="/" element={<ProductPage />} />
+        <Route exact path="/add" element={<ProductForm />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

@@ -74,6 +74,11 @@ const Header = () => {
                 Dashboard
               </StyledLink>
             </li>
+            <li>
+              <StyledLink to="/add" className="nav-item">
+                Add Product
+              </StyledLink>
+            </li>
 
             <li className="nav-button">
               <LoginButton />

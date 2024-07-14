@@ -10,6 +10,11 @@ const api = {
         Authorization: `Bearer ${accessToken}`,
       },
     }),
+  postProduct: async (data) =>
+    await fetch(`${process.env.REACT_APP_API_URL}/products`, {
+      method: "POST",
+      body: data,
+    }),
 };
 
 export default api;

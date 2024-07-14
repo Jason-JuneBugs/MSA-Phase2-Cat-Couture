@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../api";
 import AddProductButton from "./AddProductButton";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 // import ProductList from "./ProductList";
 // import Loader from "../Loader";
 // import ErrorMessage from "../ErrorMessage";
@@ -16,7 +16,7 @@ const ProductSummaryPage = () => {
   // const handleAddProduct = () => <Link to="/add">Add a new product</Link>;
   const handleAddProduct = () => {
     console.log("Add product button clicked!"); // Add this line
-    return <Navigate to="/other" />;
+    <Link to="/add"></Link>;
   };
 
   // useEffect(() => {

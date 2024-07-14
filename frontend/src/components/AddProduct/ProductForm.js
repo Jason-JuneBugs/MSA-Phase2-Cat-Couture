@@ -28,7 +28,6 @@ const ProductForm = () => {
     formData.append("imageFile", product.imageFile);
 
     try {
-      // const response = await fetch("/api/products", {
       // const response = await fetch(
       //   `${process.env.REACT_APP_API_URL}/products`,
       //   {
@@ -47,7 +46,7 @@ const ProductForm = () => {
       console.error("Error sending POST request:", error);
     }
   };
-
+  console.log("post function called");
   return (
     <form onSubmit={handleSubmit}>
       <label>

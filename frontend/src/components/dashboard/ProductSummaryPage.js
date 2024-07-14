@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../api";
 import AddProductButton from "./AddProductButton";
-import { Link, Navigate } from "react-router-dom";
 // import ProductList from "./ProductList";
 // import Loader from "../Loader";
 // import ErrorMessage from "../ErrorMessage";
@@ -14,10 +13,10 @@ const ProductSummaryPage = () => {
   const handleUpdate = () => {};
 
   // const handleAddProduct = () => <Link to="/add">Add a new product</Link>;
-  const handleAddProduct = () => {
-    console.log("Add product button clicked!"); // Add this line
-    <Link to="/add"></Link>;
-  };
+  // const handleAddProduct = () => {
+  //   console.log("the add product button has been hit");
+  // };
+  // <Link to="/add">Add product</Link>;
 
   // useEffect(() => {
   //   // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
@@ -81,7 +80,7 @@ const ProductSummaryPage = () => {
           ))}
         </tbody>
       </table>
-      <AddProductButton onClick={handleAddProduct} />
+      <AddProductButton />
     </>
   );
 };

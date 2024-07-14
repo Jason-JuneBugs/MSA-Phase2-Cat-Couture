@@ -1,11 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const AddProductButton = ({ onClick }) => {
-  return (
-    <button onClick={onClick} style={{ float: "right" }}>
-      Add a new product
-    </button>
-  );
+const AddProductButton = () => {
+  return <Link to="/add">Add Product</Link>;
 };
 
 export default AddProductButton;

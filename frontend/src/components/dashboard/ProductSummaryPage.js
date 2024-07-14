@@ -55,7 +55,8 @@ const ProductSummaryPage = () => {
 
   return (
     <>
-      <table>
+      <AddProductButton />
+      {/* <table>
         <thead>
           <tr>
             <th>Product Id</th>
@@ -79,8 +80,7 @@ const ProductSummaryPage = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-      <AddProductButton />
+      </table> */}
     </>
   );
 };

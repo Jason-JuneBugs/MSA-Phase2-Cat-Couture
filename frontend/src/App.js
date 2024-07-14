@@ -23,13 +23,13 @@ const App = () => {
       <Header />
       <Routes>
         <Route exact path="/dashboard" element={<ProtectedRoute />}>
-          {/* <Route exact path="/dashboard" element={<DashboardPage />} /> */}
           <Route exact path="/dashboard" element={<ProductSummaryPage />} />
         </Route>
+        <Route exact path="/add" element={<ProtectedRoute />}>
+          <Route exact path="/add" element={<ProductForm />} />
+        </Route>
 
-        {/* <Route exact path="/" element={<ProductPage />} /> */}
         <Route exact path="/" element={<ProductPage />} />
-        <Route exact path="/add" element={<ProductForm />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

@@ -9,7 +9,7 @@ const ProductPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [products, setProducts] = useState([]);
-  const [displayLimit, setDisplayLimit] = useState(8);
+  const [limit, setLimit] = useState(8);
 
   //add paginagtion argues
 
@@ -33,10 +33,10 @@ const ProductPage = () => {
       try {
         setLoading(true);
         setError(false);
-        const rawData = await api.getProducts(currentPage);
+        const rawData = await api.getProducts();
         const result = await rawData.json();
         setProducts(result);
-        setTotalPages(Math.ceil(parseInt(result.length) / displayLimit));
+        setTotalPages(Math.ceil(parseInt(result.length) / limit));
         console.log(result, result.length);
 
         if (!result.ok) {
@@ -44,7 +44,7 @@ const ProductPage = () => {
         }
         if (!abortController.signal.aborted) {
           setProducts(result);
-          setTotalPages(result.length / displayLimit);
+          setTotalPages(result.length / limit);
         }
       } catch (error) {
         if (!abortController.signal.aborted) {
@@ -60,18 +60,14 @@ const ProductPage = () => {
     fetchData();
 
     return () => abortController.abort();
-  }, [currentPage, products]);
+  }, [products]);
 
   return (
     <main className="main-layout section-padding">
       {loading && <Loader />}
       {/* {error && <ErrorMessage message="Error fetching products" />} */}
       {/* <ProductList products={products} className="main-content" /> */}
-      <ProductList
-        products={products}
-        limit={displayLimit}
-        page={currentPage}
-      />
+      <ProductList products={products} limit={limit} page={currentPage} />
       <PaginationControls
         onPrev={onPrev}
         onNext={onNext}

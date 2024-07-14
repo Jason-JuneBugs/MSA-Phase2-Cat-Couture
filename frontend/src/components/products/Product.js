@@ -58,7 +58,8 @@ const Product = ({
         <div>
           {imageName ? (
             <img
-              src={`./img/${imageName}`}
+              // src={`./img/${imageName}`}
+              src={`${process.env.PUBLIC_URL}/img/${imageName}`}
               alt={imageName}
               className="product-image"
             />

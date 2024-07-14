@@ -44,7 +44,7 @@ const StyledProductList = styled.ul`
 const ProductList = ({ products, limit, page }) => {
   // Calculate the starting index for the current page
   const startIndex = (page - 1) * limit;
-  console.log("startIndex:", startIndex);
+  // console.log("startIndex:", startIndex);
 
   // Slice the products array to get the products for the current page
   const paginatedProducts = products.slice(startIndex, startIndex + limit);

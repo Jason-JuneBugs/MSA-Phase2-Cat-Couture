@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../../api";
 import { useParams } from "react-router-dom";
 
-// function ProductForm() {
 const UpdateProductForm = () => {
   const { id } = useParams();
-  console.log("passed in id is", id);
   const [product, setProduct] = useState({
     id: parseInt(id, 10),
     name: "",
@@ -14,6 +12,27 @@ const UpdateProductForm = () => {
     imageName: "",
     imageFile: null,
   });
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const response = await api.getProductById(id);
+        const result = await response.json();
+        setProduct({
+          ...product,
+          name: result.name,
+          description: result.description,
+          price: result.price,
+          imageName: result.imageName,
+        });
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+        // Handle error (e.g., show an error message)
+      }
+    };
+
+    fetchProductData();
+  }, [id]);
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;

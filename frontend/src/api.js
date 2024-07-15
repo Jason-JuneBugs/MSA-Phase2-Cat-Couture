@@ -2,6 +2,9 @@ const api = {
   getProducts: async () =>
     // await fetch(`${process.env.REACT_APP_API_URL}/products?page=${page}`),
     await fetch(`${process.env.REACT_APP_API_URL}/products`),
+  getProductById: async (productId) =>
+    // await fetch(`${process.env.REACT_APP_API_URL}/products?page=${page}`),
+    await fetch(`${process.env.REACT_APP_API_URL}/products/${productId}`),
   getReports: async (accessToken) =>
     await fetch(`${process.env.REACT_APP_API_URL}/reports`, {
       method: "GET", //added

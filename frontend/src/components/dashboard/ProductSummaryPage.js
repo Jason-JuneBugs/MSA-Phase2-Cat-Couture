@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../api";
 import AddProductButton from "./AddProductButton";
+import { useNavigate } from "react-router-dom";
 // import ProductList from "./ProductList";
 // import Loader from "../Loader";
 // import ErrorMessage from "../ErrorMessage";
@@ -8,15 +9,14 @@ import AddProductButton from "./AddProductButton";
 
 const ProductSummaryPage = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   const handleDelete = () => {};
-  const handleUpdate = () => {};
-
-  // const handleAddProduct = () => <Link to="/add">Add a new product</Link>;
-  // const handleAddProduct = () => {
-  //   console.log("the add product button has been hit");
-  // };
-  // <Link to="/add">Add product</Link>;
+  const handleUpdate = (id) => {
+    console.log("handleUpdate button clicked", id);
+    // Example: Redirect to the update page
+    navigate(`/update/${id}`);
+  };
 
   // useEffect(() => {
   //   // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
@@ -55,8 +55,10 @@ const ProductSummaryPage = () => {
 
   return (
     <>
+      {/* <AddProductButton onClick={handleAddProduct} /> */}
       <AddProductButton />
-      {/* <table>
+
+      <table>
         <thead>
           <tr>
             <th>Product Id</th>
@@ -80,7 +82,7 @@ const ProductSummaryPage = () => {
             </tr>
           ))}
         </tbody>
-      </table> */}
+      </table>
     </>
   );
 };

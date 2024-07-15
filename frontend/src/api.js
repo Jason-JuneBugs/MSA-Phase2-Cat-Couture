@@ -57,6 +57,29 @@ const api = {
       throw error;
     }
   },
+
+  deleteById: async (productId) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/products/${productId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        // Handle error cases (e.g., non-200 status codes)
+        throw new Error("Failed to delete product");
+      }
+
+      // Product deleted successfully
+      console.log("Product deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      // Handle error (e.g., show an error message to the user)
+      throw error;
+    }
+  },
 };
 
 export default api;

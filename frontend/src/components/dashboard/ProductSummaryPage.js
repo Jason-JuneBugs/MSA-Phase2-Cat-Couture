@@ -11,7 +11,9 @@ const ProductSummaryPage = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
-  const handleDelete = () => {};
+  const handleDelete = async (productId) => {
+    await api.deleteById(productId);
+  };
   const handleUpdate = (id) => {
     console.log("handleUpdate button clicked", id);
     // Example: Redirect to the update page
@@ -51,7 +53,7 @@ const ProductSummaryPage = () => {
     fetchData();
 
     return () => abortController.abort();
-  }, []);
+  }, [products]);
 
   return (
     <>

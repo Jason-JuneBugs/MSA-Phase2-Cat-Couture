@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 import api from "../../api";
 import AddProductButton from "./AddProductButton";
 import { useNavigate } from "react-router-dom";
-// import ProductList from "./ProductList";
-// import Loader from "../Loader";
-// import ErrorMessage from "../ErrorMessage";
-// import PaginationControls from "./PaginationControls";
 
 const ProductSummaryPage = () => {
   const [products, setProducts] = useState([]);
@@ -32,16 +28,17 @@ const ProductSummaryPage = () => {
   };
 
   useEffect(() => {
-    // We use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
-    //   // to clean up so that we don’t introduce a memory leak
-    //   // (https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup)
+    //  use AbortController (https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
+    //   to clean up so that we don’t introduce a memory leak
+    //   (https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup)
     const abortController = new AbortController();
 
     const fetchData = async () => {
       try {
         const response = await api.getProducts();
         const result = await response.json();
-        setProducts(result);
+        const sortedResult = [...result].sort((a, b) => a.id - b.id);
+        setProducts(sortedResult);
         setInitialFetchDone(true);
       } catch (error) {
         // Handle any errors here

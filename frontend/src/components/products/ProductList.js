@@ -1,5 +1,6 @@
 import Product from "./Product";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 const StyledProductList = styled.ul`
   display: flex;
@@ -23,31 +24,18 @@ const StyledProductList = styled.ul`
   }
 `;
 
-// const ProductList = ({ products, className }) => {
-//   return (
-//     <StyledProductList>
-//       {products.map((product) => (
-//         <Product
-//           key={product.id}
-//           name={product.name}
-//           description={product.description}
-//           price={product.price}
-//           imageName={product.imageName}
-//           // imageDescription="default image"
-//           // discountValue={product.discountValue}
-//           // discountType={product.discountType}
-//         />
-//       ))}
-//     </StyledProductList>
-//   );
-// };
 const ProductList = ({ products, limit, page }) => {
   // Calculate the starting index for the current page
   const startIndex = (page - 1) * limit;
-  // console.log("startIndex:", startIndex);
 
-  // Slice the products array to get the products for the current page
-  const paginatedProducts = products.slice(startIndex, startIndex + limit);
+  // Sort products by id (ascending)
+  const sortedProducts = [...products].sort((a, b) => a.id - b.id);
+
+  // Slice the sorted products array to get the products for the current page
+  const paginatedProducts = sortedProducts.slice(
+    startIndex,
+    startIndex + limit
+  );
 
   return (
     <StyledProductList>
@@ -63,4 +51,5 @@ const ProductList = ({ products, limit, page }) => {
     </StyledProductList>
   );
 };
+
 export default ProductList;

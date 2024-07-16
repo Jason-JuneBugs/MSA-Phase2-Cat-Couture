@@ -60,14 +60,19 @@ const ProductPage = () => {
     fetchData();
 
     return () => abortController.abort();
-  }, [products]);
+  }, []);
 
   return (
     <main className="main-layout section-padding">
       {loading && <Loader />}
-      {/* {error && <ErrorMessage message="Error fetching products" />} */}
+      {error && <ErrorMessage message="Error fetching products" />}
       {/* <ProductList products={products} className="main-content" /> */}
-      <ProductList products={products} limit={limit} page={currentPage} />
+      <ProductList
+        products={products}
+        limit={limit}
+        page={currentPage}
+        className="main-content"
+      />
       <PaginationControls
         onPrev={onPrev}
         onNext={onNext}

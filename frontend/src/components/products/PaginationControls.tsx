@@ -91,9 +91,10 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
   currentPage = null,
   totalPages = null,
 }) => {
-  const preDisabled = currentPage !== null && currentPage > 1;
+  const preDisabled = currentPage !== null && currentPage === 1;
   const nextDisabled =
     currentPage !== null && totalPages !== null && currentPage >= totalPages;
+  console.log(preDisabled,nextDisabled)
 
   return (
     <StyledPaginationContainer>

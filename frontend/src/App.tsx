@@ -29,7 +29,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { styled } from '@mui/system'; // Import styled from MUI
 import Header from './components/Header'
-import ProductPage from './components/products/ProductPage';
+import ProductPage from './components/products/ProductPage'
 import NotFoundPage from './components/NotFoundPage';
 import Footer from './components/Footer'
 import ProtectedRoute from './components/ProtectedRoute';

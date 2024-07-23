@@ -16,12 +16,10 @@ const ProductPage: React.FC = () => {
 
   const onPrev = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
-    // console.log("onPrev hit!", currentPage)
   };
 
   const onNext = () => {
     if (currentPage < totalPages!) setCurrentPage(currentPage + 1);
-    // console.log("onNext hit",currentPage)
   };
 
   useEffect(() => {
@@ -35,10 +33,9 @@ const ProductPage: React.FC = () => {
 
         if (rawData) {
           const result = await rawData.json();
-          console.log("result is :",result)
+        //   console.log("result is :",result)
           setProducts(result);
           setTotalPages(Math.ceil(result.length / limit));
-        //   console.log("total page is ", totalPages,"current page is", currentPage)
 
           if (!result.ok) {
             throw new Error("API Error");

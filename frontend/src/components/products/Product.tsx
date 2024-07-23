@@ -139,6 +139,7 @@ const Product: React.FC<ProductProps> = ({
           {imageName ? (
             <StyledProductImage
               src={`${process.env.PUBLIC_URL}/img/${imageName}`}
+              // src={`../../../../backend/Uploads/${imageName}`}
               alt={imageName}
             />
           ) : (

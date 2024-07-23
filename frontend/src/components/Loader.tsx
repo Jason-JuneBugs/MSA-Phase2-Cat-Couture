@@ -18,9 +18,12 @@ import Icon from '@mui/material/Icon';
 const Loader: React.FC = () => {
   return (
     <div>
-      <Icon>spinner</Icon>
+      <Icon>Loading</Icon>
     </div>
   );
 };
 
 export default Loader;
+
+ 
+

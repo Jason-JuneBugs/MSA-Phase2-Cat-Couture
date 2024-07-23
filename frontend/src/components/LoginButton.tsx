@@ -28,14 +28,15 @@
 
 import React from 'react';
 import { useAuth0, LogoutOptions } from '@auth0/auth0-react';
+// import Loader from './Loader';
 
 const LoginButton: React.FC = () => {
   const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0();
-
+  console.log("loginbutton rendered")
+  console.log("isAuth:", isAuthenticated,"isLoading:",isLoading)
   if (isLoading) {
     return (
       <button>
-        {/* <Loader /> */}
         loading
       </button>
     );

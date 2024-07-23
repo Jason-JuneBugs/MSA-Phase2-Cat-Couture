@@ -79,34 +79,6 @@ namespace backend.Controllers
             return Ok(product);
         }
 
-        //PUT: api/products/5
-        // [HttpPut("{id}")]
-        // public async Task<IActionResult> PutProduct(int id, Product product)
-        // {
-        //     if (id != product.Id)
-        //     {
-        //         return BadRequest();
-        //     }
-
-        //     try
-        //     {
-        //         await _repository.UpdateProductAsync(product);
-        //     }
-        //     catch (DbUpdateConcurrencyException)
-        //     {
-        //         if (!await _repository.ProductExistsAsync(id))
-        //         {
-        //             return NotFound();
-        //         }
-        //         else
-        //         {
-        //             throw;
-        //         }
-        //     }
-
-        //     return NoContent();
-        // }
-
 
         //PUT: api/products/{id}
         [HttpPut("{id}")]
@@ -125,6 +97,7 @@ namespace backend.Controllers
                     return StatusCode(StatusCodes.Status404NotFound, $"Product with id: {id} does not found");
                 }
                 string oldImageName = existingProduct.ImageName;
+
                 if (productToUpdate.ImageFile != null)
                 {
                     if (productToUpdate.ImageFile?.Length > 1 * 1024 * 1024)
@@ -148,6 +121,13 @@ namespace backend.Controllers
                 // if image is updated, then we have to delete old image from directory
                 if (productToUpdate.ImageFile != null)
                     _fileService.DeleteFile(oldImageName);
+                else if (oldImageName != productToUpdate.ImageName)
+                {
+                    string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+                    _fileService.UpdateFileName(productToUpdate.ImageName, allowedFileExtentions);
+                    _fileService.DeleteFile(oldImageName);
+                }
+
 
                 return Ok(updatedProduct);
             }
@@ -158,78 +138,6 @@ namespace backend.Controllers
             }
         }
 
-        // [HttpPut("{id}")]
-        // public async Task<IActionResult> PutProduct(int id, Product product)
-        // {
-        //     if (id != product.Id)
-        //     {
-        //         return BadRequest();
-        //     }
-
-        //     try
-        //     {
-        //         // Retrieve the existing product (if needed)
-        //         var existingProduct = await _repository.GetProductByIdAsync(id);
-        //         if (existingProduct == null)
-        //         {
-        //             return NotFound();
-        //         }
-
-        //         // Update properties of the existing product
-        //         existingProduct.Name = product.Name;
-        //         existingProduct.Description = product.Description;
-        //         existingProduct.Price = product.Price;
-
-        //         //
-        //         existingProduct.ProductCategoryId = product.ProductCategoryId;
-
-        //         // Update the product category (if applicable)
-        //         if (product.ProductCategoryId.HasValue)
-        //         {
-        //             // Retrieve the existing category (if needed)
-        //             var existingCategory = await _repository.GetProductCategoryByIdAsync(product.ProductCategoryId.Value);
-        //             if (existingCategory != null)
-        //             {
-        //                 existingProduct.ProductCategory = existingCategory;
-        //             }
-        //         }
-
-        //         // Save changes
-        //         await _repository.UpdateProductAsync(existingProduct);
-
-        //         return NoContent();
-        //     }
-        //     catch (DbUpdateConcurrencyException)
-        //     {
-        //         return NotFound();
-        //     }
-        // }
-
-
-
-
-        // POST: api/Products
-        // [HttpPost]
-        // public async Task<ActionResult<Product>> PostProduct(Product product)
-        // {
-        //     await _repository.AddProductAsync(product);
-        //     return CreatedAtAction("GetProduct", new { id = product.Id }, product);
-        // }
-
-        // DELETE: api/Products/5
-        // [HttpDelete("{id}")]
-        // public async Task<IActionResult> DeleteProduct(int id)
-        // {
-        //     var product = await _repository.GetProductByIdAsync(id);
-        //     if (product == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     await _repository.DeleteProductAsync(id);
-
-        //     return NoContent();
-        // }
 
         // DELETE: api/Products/5
         [HttpDelete("{id}")]

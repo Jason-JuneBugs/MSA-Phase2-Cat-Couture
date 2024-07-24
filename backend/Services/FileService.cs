@@ -1,5 +1,3 @@
-// using Microsoft.AspNetCore.Hosting;
-// using Microsoft.AspNetCore.Http;
 
 namespace Services;
 
@@ -7,7 +5,7 @@ public interface IFileService
 {
     Task<string> SaveFileAsync(IFormFile imageFile, string[] allowedFileExtensions);
     void DeleteFile(string fileNameWithExtension);
-    void UpdateFileName(string ImageName, string[] allowedFileExtensions);
+    void UpdateFileName(string oldImageName, string newImageName, string[] allowedFileExtensions);
 }
 
 public class FileService(IWebHostEnvironment environment) : IFileService
@@ -45,9 +43,9 @@ public class FileService(IWebHostEnvironment environment) : IFileService
         return fileName;
     }
 
-    public void UpdateFileName(string imageName, string[] allowedFileExtensions)
+    public void UpdateFileName(string oldImageName, string newImageName, string[] allowedFileExtensions)
     {
-        if (imageName is null)
+        if (newImageName is null)
         {
             // Handle the error (e.g., throw an exception).
         }
@@ -56,22 +54,20 @@ public class FileService(IWebHostEnvironment environment) : IFileService
         var parentPath = Directory.GetParent(contentPath)?.FullName;
         var path = Path.Combine(parentPath, "frontend", "public", "img");
 
+
         if (!Directory.Exists(path))
         {
             Directory.CreateDirectory(path);
         }
 
         // Check if the file extension is allowed
-        var ext = Path.GetExtension(imageName);
+        var ext = Path.GetExtension(newImageName);
         if (!allowedFileExtensions.Contains(ext))
         {
             throw new ArgumentException($"Only {string.Join(",", allowedFileExtensions)} are allowed.");
         }
 
-        // Generate a unique filename
-        var fileName = imageName;
-        var fileNameWithPath = Path.Combine(path, fileName);
-        using var stream = new FileStream(fileNameWithPath, FileMode.Create);
+        File.Move(Path.Combine(parentPath, "frontend", "public", "img", oldImageName), Path.Combine(parentPath, "frontend", "public", "img", newImageName));
     }
 
 
@@ -81,8 +77,7 @@ public class FileService(IWebHostEnvironment environment) : IFileService
         {
             throw new ArgumentNullException(nameof(fileNameWithExtension));
         }
-        // var contentPath = environment.ContentRootPath;
-        // var path = Path.Combine(contentPath, $"Uploads", fileNameWithExtension);
+
         var contentPath = environment.ContentRootPath;
         var parentPath = Directory.GetParent(contentPath)?.FullName;
         var path = Path.Combine(parentPath, "frontend", "public", "img", fileNameWithExtension);

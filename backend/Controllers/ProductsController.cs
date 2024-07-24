@@ -124,7 +124,7 @@ namespace backend.Controllers
                 else if (oldImageName != productToUpdate.ImageName)
                 {
                     string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
-                    _fileService.UpdateFileName(productToUpdate.ImageName, allowedFileExtentions);
+                    _fileService.UpdateFileName(oldImageName, productToUpdate.ImageName, allowedFileExtentions);
                     _fileService.DeleteFile(oldImageName);
                 }
 

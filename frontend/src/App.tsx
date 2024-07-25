@@ -52,7 +52,7 @@
 //following refers to auth0 sample code
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { styled } from '@mui/system'; // Import styled from MUI
 import Header from './components/Header'
 import ProductPage from './components/products/ProductPage'

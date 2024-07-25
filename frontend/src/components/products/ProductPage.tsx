@@ -65,14 +65,13 @@ const ProductPage: React.FC = () => {
   }, [totalPages,currentPage]);
 
   return (
-    <main className="main-layout section-padding">
+    <main style={{ marginTop: "2px" }}>
       {/* {loading && <Loader />}
       {error && <ErrorMessage message="Error fetching products" />} */}
       <ProductList
         products={products}
         limit={limit}
         page={currentPage}
-        // className="main-content"
       />
       <PaginationControls
         onPrev={onPrev}

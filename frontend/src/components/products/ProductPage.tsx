@@ -66,8 +66,8 @@ const ProductPage: React.FC = () => {
 
   return (
     <main className="main-layout section-padding">
-      {loading && <Loader />}
-      {error && <ErrorMessage message="Error fetching products" />}
+      {/* {loading && <Loader />}
+      {error && <ErrorMessage message="Error fetching products" />} */}
       <ProductList
         products={products}
         limit={limit}

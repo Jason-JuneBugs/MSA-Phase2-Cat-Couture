@@ -58,11 +58,15 @@
 // };
 
 // export default PaginationControls;
+
+ 
 import React from "react";
 import { styled } from "@mui/system"; // Import MUI styled utility
 import Button from "@mui/material/Button"; // Import MUI Button component
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // You can keep this import if needed
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import Typography from "@mui/material/Typography";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+
 const StyledPaginationContainer = styled("div")`
   display: flex;
   justify-content: center;
@@ -99,30 +103,29 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
   return (
     <StyledPaginationContainer>
       <StyledPaginationControls>
-        <div>
-          <Button
+     
+        <Button
             aria-label="Previous page"
-            onClick={onPrev}
-            disabled={preDisabled}
-          >
-             <FontAwesomeIcon icon={faChevronLeft} size="2x" />
-          </Button>
-        </div>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <div>
-          <Button
-            aria-label="Next page"
-            onClick={onNext}
-            disabled={nextDisabled}
-          >
-            <FontAwesomeIcon icon={faChevronRight} size="2x" />
-          </Button>
-        </div>
+           onClick={onPrev}
+           disabled={preDisabled}
+        >
+        <ArrowLeftIcon fontSize="large" />
+        </Button>
+        <Typography variant="body1" style={{ whiteSpace: "nowrap" }}>
+           Page {currentPage} of {totalPages}
+        </Typography>
+     
+        <Button
+          aria-label="Next page"
+          onClick={onNext}
+          disabled={nextDisabled}
+        >
+       <ArrowRightIcon fontSize="large" />
+        </Button>
       </StyledPaginationControls>
     </StyledPaginationContainer>
   );
 };
 
 export default PaginationControls;
+

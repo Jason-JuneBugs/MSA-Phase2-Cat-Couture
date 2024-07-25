@@ -94,29 +94,82 @@
 
 // export default Product;
 
+
+/// Original CSS using styled component library
+// import React from "react";
+// import { styled } from "@mui/system"; // Import styled from MUI system
+// import Button from "@mui/material/Button";
+
+// const StyledProduct = styled("li")({
+//   flexGrow: 1,
+//   marginBottom: "20px",
+// });
+
+// const StyledCard = styled("div")({
+//   display: "flex",
+//   flexDirection: "column",
+//   alignItems: "flex-start",
+//   backgroundColor: "gray",
+//   borderRadius: "15px",
+//   padding: "1rem",
+//   maxWidth: "325px",
+//   height: "100%",
+// });
+
+// const StyledProductImage = styled("img")({
+//   width: "100%",
+// });
+
+// interface ProductProps {
+//   name: string;
+//   description: string;
+//   price: number;
+//   imageName?: string;
+//   // Add other props as needed
+// }
+
+// const Product: React.FC<ProductProps> = ({
+//   name,
+//   description,
+//   price,
+//   imageName,
+// }) => {
+//   return (
+//     <StyledProduct>
+//       <StyledCard>
+//         <div>
+//           {imageName ? (
+//             <StyledProductImage
+//               src={`${process.env.PUBLIC_URL}/img/${imageName}`}
+//               alt={imageName}
+//             />
+//           ) : (
+//             <StyledProductImage
+//               src="./img/cat-photo-default.jpg"
+//               alt="Default product cat"
+//             />
+//           )}
+//         </div>
+//         <h3>{name}</h3>
+//         <p>Price: {`${price} NZD`}</p>
+//         {/* Add DiscountBadge component here if needed */}
+//         <p data-testid="product-description">{description}</p>
+//         <Button variant="contained" color="primary">
+//           Add to Cart
+//         </Button>
+//       </StyledCard>
+//     </StyledProduct>
+//   );
+// };
+
+// export default Product;
+
+
+///CSS using MUI library
+
 import React from "react";
-import { styled } from "@mui/system"; // Import styled from MUI system
-import Button from "@mui/material/Button";
-
-const StyledProduct = styled("li")({
-  flexGrow: 1,
-  marginBottom: "20px",
-});
-
-const StyledCard = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  backgroundColor: "gray",
-  borderRadius: "15px",
-  padding: "1rem",
-  maxWidth: "325px",
-  height: "100%",
-});
-
-const StyledProductImage = styled("img")({
-  width: "100%",
-});
+import { Card, CardContent,CardActions, CardMedia, Typography, Button } from "@mui/material";
+import { height } from "@mui/system";
 
 interface ProductProps {
   name: string;
@@ -133,32 +186,28 @@ const Product: React.FC<ProductProps> = ({
   imageName,
 }) => {
   return (
-    <StyledProduct>
-      <StyledCard>
-        <div>
-          {imageName ? (
-            <StyledProductImage
-              src={`${process.env.PUBLIC_URL}/img/${imageName}`}
-              // src={`../../../../backend/Uploads/${imageName}`}
-              alt={imageName}
-            />
-          ) : (
-            <StyledProductImage
-              src="./img/cat-photo-default.jpg"
-              alt="Default product cat"
-            />
-          )}
-          {/* Add DiscountBadge component here if needed */}
-        </div>
-        <h3>{name}</h3>
-        <p>Price: {`${price} NZD`}</p>
-        {/* Add DiscountBadge component here if needed */}
-        <p data-testid="product-description">{description}</p>
+    <Card style={{ height: "100%", width:"100%"}}>
+      <CardMedia
+        component="img"
+        alt={imageName || "Default product cat"}
+        height="60%"
+        image={imageName ? `${process.env.PUBLIC_URL}/img/${imageName}` : "./img/cat-photo-default.jpg"}
+      />
+      <CardContent style={{height:"20%"}}>
+        <Typography variant="h6" component="h1"> {name} </Typography>
+        <Typography variant="body1">Price: {`${price} NZD`}</Typography>
+        <Typography variant="body2" data-testid="product-description">
+          {description}
+        </Typography>
+      </CardContent>
+      <CardActions style={{ justifyContent: 'flex-end', marginBottom: '1px' ,height:"auto"}}>
         <Button variant="contained" color="primary">
           Add to Cart
         </Button>
-      </StyledCard>
-    </StyledProduct>
+      </CardActions>
+      
+    </Card>
+ 
   );
 };
 

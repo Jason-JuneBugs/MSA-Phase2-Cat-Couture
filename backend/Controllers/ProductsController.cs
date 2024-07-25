@@ -125,7 +125,6 @@ namespace backend.Controllers
                 {
                     string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
                     _fileService.UpdateFileName(oldImageName, productToUpdate.ImageName, allowedFileExtentions);
-                    _fileService.DeleteFile(oldImageName);
                 }
 
 

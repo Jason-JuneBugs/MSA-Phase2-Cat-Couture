@@ -190,7 +190,7 @@ import { useNavigate } from "react-router-dom";
 const styles = {
   container: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     margin: "1rem 0",
 

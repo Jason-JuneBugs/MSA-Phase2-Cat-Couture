@@ -58,7 +58,6 @@ import Header from './components/Header'
 import ProductPage from './components/products/ProductPage'
 import NotFoundPage from './components/NotFoundPage';
 import Footer from './components/Footer'
-// import ProtectedRoute from './components/ProtectedRoute';
 import ProductSummaryPage from './components/dashboard/ProductSummaryPage';
 import AddProductForm from './components/products/AddProductForm';
 import UpdateProductForm from './components/products/UpdateProductForm';

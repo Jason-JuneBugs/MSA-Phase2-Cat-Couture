@@ -33,5 +33,5 @@ Here is an overview of the key directories and files in the project:
    `dotnet run`
 
 3. URLs:
-   `/api/students`
+   `/api/products`
    `/swagger/index.html`

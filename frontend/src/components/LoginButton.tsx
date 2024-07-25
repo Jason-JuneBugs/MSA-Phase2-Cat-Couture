@@ -28,6 +28,7 @@
 
 import React from 'react';
 import { useAuth0, LogoutOptions } from '@auth0/auth0-react';
+import { Button } from '@mui/material';
 // import Loader from './Loader';
 
 const LoginButton: React.FC = () => {
@@ -44,13 +45,27 @@ const LoginButton: React.FC = () => {
 
   if (isAuthenticated) {
     return (
-      <button onClick={() => logout({ returnTo: window.location.origin } as LogoutOptions)}>
-        Log Out
-      </button>
+       <Button
+           variant="contained"
+          //  color="primary"
+           sx={{ color: 'white', backgroundColor: 'green', borderColor: 'green' }}
+           style={{ maxWidth: '100px', minWidth: '100px' }}
+           onClick={() => logout({ returnTo: window.location.origin } as LogoutOptions)}>
+              Log Out
+       </Button>
+      // <button onClick={() => logout({ returnTo: window.location.origin } as LogoutOptions)}>
+    //     Log Out
+    //   </button>
     );
   }
 
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
+  // return <button onClick={() => loginWithRedirect()}>Log In</button>;
+  return <Button 
+           variant="contained"
+          //  color="primary"
+           sx={{ color: 'white', backgroundColor: 'Grey', borderColor: 'green' }}
+           style={{ maxWidth: '100px', minWidth: '100px' }}
+           onClick={() => loginWithRedirect()}>Log In</Button>;
 };
 
 export default LoginButton;

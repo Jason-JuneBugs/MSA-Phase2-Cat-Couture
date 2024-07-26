@@ -13,14 +13,14 @@ Here is an overview of the key directories and files in the project:
 
 - `backend/`: Root directory of the backend application.
   - `Controllers/`: Contains API controllers.
-    - `StudentsController.cs`: Controller for handling student-related API endpoints.
+    - `ProductsController.cs`: Controller for handling products-related API endpoints.
   - `Data/`: Contains the Entity Framework Core data context.
-    - `StudentContext.cs`: EF Core data context for students.
+    - `ProductContext.cs`: EF Core data context for students.
   - `Models/`: Contains data models.
-    - `Student.cs`: Data model for a student.
+    - `Product.cs`: Data model for a student.
   - `Repositories/`: Contains repository interfaces and implementations.
-    - `IStudentRepository.cs`: Interface for the student repository.
-    - `StudentRepository.cs`: Implementation of the student repository.
+    - `IProductRepository.cs`: Interface for the student repository.
+    - `ProductRepository.cs`: Implementation of the student repository.
   - `Program.cs`: Entry point of the application.
   - `appsettings.json`: Configuration file for the application settings.
 

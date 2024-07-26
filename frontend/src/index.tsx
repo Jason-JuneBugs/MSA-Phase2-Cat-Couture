@@ -5,7 +5,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from './App';
-import { Auth0ProviderWithNavigate } from "./auth0-provider-with-navigate";
+import { Auth0ProviderWithNavigate } from "./components/Utils/auth0-provider-with-navigate";
 import './index.css';
  
 const container = document.getElementById("root") as HTMLElement;

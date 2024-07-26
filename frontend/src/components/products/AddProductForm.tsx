@@ -198,7 +198,7 @@
 
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material"; // Import MUI components
-import api from "../../api";
+import api from "../api/api";
 import { Box } from "@mui/system";
 
 const AddProductForm: React.FC = () => {

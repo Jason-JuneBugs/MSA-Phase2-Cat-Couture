@@ -61,7 +61,7 @@ import Footer from './components/Footer'
 import ProductSummaryPage from './components/dashboard/ProductSummaryPage';
 import AddProductForm from './components/products/AddProductForm';
 import UpdateProductForm from './components/products/UpdateProductForm';
-import AuthenticationGuard from './components/authentication-guard'
+import AuthenticationGuard from './components/Utils/authentication-guard'
 const StyledApp = styled('div')({
   display: 'flex',
   height: '100vh',

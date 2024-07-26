@@ -291,7 +291,7 @@
 
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Box } from "@mui/material"; // Import MUI components
-import api from "../../api";
+import api from "../api/api";
 import { useParams } from "react-router-dom";
 
 const UpdateProductForm: React.FC = () => {

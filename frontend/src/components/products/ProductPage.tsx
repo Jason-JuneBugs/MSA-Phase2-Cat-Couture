@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../api"
+import api from "../api/api"
 import ProductList from "./ProductList";
 import Loader from "../Loader";
 import ErrorMessage from "../ErrorMessage"
@@ -33,7 +33,6 @@ const ProductPage: React.FC = () => {
 
         if (rawData) {
           const result = await rawData.json();
-        //   console.log("result is :",result)
           setProducts(result);
           setTotalPages(Math.ceil(result.length / limit));
 

@@ -169,7 +169,6 @@
 
 import React from "react";
 import { Card, CardContent,CardActions, CardMedia, Typography, Button } from "@mui/material";
-import { height } from "@mui/system";
 
 interface ProductProps {
   name: string;

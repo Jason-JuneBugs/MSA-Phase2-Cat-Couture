@@ -183,7 +183,7 @@
 
 import React, { useEffect, useState } from "react";
 import {Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from "@mui/material";
-import api from "../../api";
+import api from "../api/api";
 import AddProductButton from "./AddProductButton";
 import { useNavigate } from "react-router-dom";
 

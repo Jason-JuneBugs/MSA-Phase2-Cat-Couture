@@ -74,4 +74,6 @@ app.MapControllers();
 
 app.CreateDbIfNotExists();
 
+app.Urls.Add("http://*:80");
+
 app.Run();

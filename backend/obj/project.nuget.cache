@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F8J43XCxJCeELT9lEZ5Z9pR6q/9TlFV9O4ePulCwwtW/GANUinSnQ3r+/X8ALftWRLzHM/z8McM48MrL70l7Yg==",
+  "dgSpecHash": "uZ7mLWBhWdtkk7M3eqPf4EHONTtIE71D4xA7ONSfUGmdDGY+G6yYqYMmuUQTkykJT9hHehA1oyHFxNBieSAPqQ==",
   "success": true,
-  "projectFilePath": "/Users/jasonzhong/MSA-Phase2-Cat-Couture/backend/backend.csproj",
+  "projectFilePath": "/Users/jasonzhong/MSA-Phase2-Cat-Couture(v1.1-dockerTest)/backend/backend.csproj",
   "expectedPackageFiles": [
     "/Users/jasonzhong/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/jasonzhong/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",

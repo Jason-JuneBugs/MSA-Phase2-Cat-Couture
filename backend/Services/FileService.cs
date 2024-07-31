@@ -20,7 +20,7 @@ public class FileService(IWebHostEnvironment environment) : IFileService
 
         var contentPath = environment.ContentRootPath;
         var parentPath = Directory.GetParent(contentPath)?.FullName;
-        var path = Path.Combine(parentPath, "frontend", "public", "img");
+        var path = Path.Combine(parentPath, "app", "frontend", "public", "img");
 
 
         if (!Directory.Exists(path))
@@ -52,7 +52,7 @@ public class FileService(IWebHostEnvironment environment) : IFileService
 
         var contentPath = environment.ContentRootPath;
         var parentPath = Directory.GetParent(contentPath)?.FullName;
-        var path = Path.Combine(parentPath, "frontend", "public", "img");
+        var path = Path.Combine(parentPath, "app", "frontend", "public", "img");
 
 
         if (!Directory.Exists(path))
@@ -67,7 +67,7 @@ public class FileService(IWebHostEnvironment environment) : IFileService
             throw new ArgumentException($"Only {string.Join(",", allowedFileExtensions)} are allowed.");
         }
 
-        File.Move(Path.Combine(parentPath, "frontend", "public", "img", oldImageName), Path.Combine(parentPath, "frontend", "public", "img", newImageName));
+        File.Move(Path.Combine(parentPath, "app", "frontend", "public", "img", oldImageName), Path.Combine(parentPath, "app", "frontend", "public", "img", newImageName));
     }
 
 
@@ -80,7 +80,7 @@ public class FileService(IWebHostEnvironment environment) : IFileService
 
         var contentPath = environment.ContentRootPath;
         var parentPath = Directory.GetParent(contentPath)?.FullName;
-        var path = Path.Combine(parentPath, "frontend", "public", "img", fileNameWithExtension);
+        var path = Path.Combine(parentPath, "app", "frontend", "public", "img", fileNameWithExtension);
 
 
         if (!File.Exists(path))

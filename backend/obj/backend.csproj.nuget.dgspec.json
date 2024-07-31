@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jasonzhong/MSA-Phase2-Cat-Couture/backend/backend.csproj": {}
+    "/Users/jasonzhong/MSA-Phase2-Cat-Couture(v1.1-dockerTest)/backend/backend.csproj": {}
   },
   "projects": {
-    "/Users/jasonzhong/MSA-Phase2-Cat-Couture/backend/backend.csproj": {
+    "/Users/jasonzhong/MSA-Phase2-Cat-Couture(v1.1-dockerTest)/backend/backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jasonzhong/MSA-Phase2-Cat-Couture/backend/backend.csproj",
+        "projectUniqueName": "/Users/jasonzhong/MSA-Phase2-Cat-Couture(v1.1-dockerTest)/backend/backend.csproj",
         "projectName": "backend",
-        "projectPath": "/Users/jasonzhong/MSA-Phase2-Cat-Couture/backend/backend.csproj",
+        "projectPath": "/Users/jasonzhong/MSA-Phase2-Cat-Couture(v1.1-dockerTest)/backend/backend.csproj",
         "packagesPath": "/Users/jasonzhong/.nuget/packages/",
-        "outputPath": "/Users/jasonzhong/MSA-Phase2-Cat-Couture/backend/obj/",
+        "outputPath": "/Users/jasonzhong/MSA-Phase2-Cat-Couture(v1.1-dockerTest)/backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jasonzhong/.nuget/NuGet/NuGet.Config"

@@ -1,0 +1,5 @@
+version: '3'
+services:
+  frontend:
+    environment:
+      - REACT_APP_API_URL=http://localhost:5006/api

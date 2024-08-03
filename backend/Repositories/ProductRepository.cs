@@ -25,11 +25,7 @@ namespace Repositories
         }
 
 
-        // public async Task AddProductAsync(Product product)
-        // {
-        //     _context.Products.Add(product);
-        //     await _context.SaveChangesAsync();
-        // }
+
         public async Task<Product> AddProductAsync(Product product)
         {
             _context.Products.Add(product);
